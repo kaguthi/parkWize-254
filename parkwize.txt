@@ -1,0 +1,39 @@
+Parkwize 254 
+1. Parking Management
+2. User park searching
+3. User parking
+4. clear parking
+
+PARKING MANAGEMENT
+1. Parking manager to register parking site 
+2. PM to open/close parking site
+
+PM to register parking site
+1. Parking Site name
+2. Geographic location
+3. ps maximum parking slot
+4. Parking site contacts number 
+"Get feedback in form of a sms text"
+
+PM TO OPEN/CLOSE PS
+1.Parking Site Name
+	- open
+	- close
+
+User Park searching
+1. county name
+2. "We provide Users with parking information[ name and available parking slots]"
+3.  we give the responds to user through sms and parking geographic locations
+
+USER PARKING
+1. parking site name
+2. Car plate number 
+3. we provide responds to user through the sms with the clearing code included 
+
+clearing parking
+IOT implementation
+
+BACKGROUNG PROCESSING
+1.when a user successfully parks a car the system removes the parking slot
+2.parking is only available when is opened by the PM
+3.the iot gadget add a parking slots
