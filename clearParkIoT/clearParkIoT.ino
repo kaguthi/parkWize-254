@@ -3,8 +3,10 @@
 #include <Keypad.h>
 
 #define Code_Length 8
+#define Max_Masters 3
+
 char Data[Code_Length];
-char Master[Code_Length] = "123A456";
+char Masters[Max_Masters][Code_Length] = {"123A456", "789B321", "456C789"}; // Example master codes
 
 int lockOutput = 13;
 byte data_count = 0;
@@ -62,7 +64,15 @@ void loop() {
   if (data_count == Code_Length - 1) {
     lcd.clear();
 
-    if (!strcmp(Data, Master)) {
+    bool isMaster = false;
+    for (int i = 0; i < Max_Masters; i++) {
+      if (!strcmp(Data, Masters[i])) {
+        isMaster = true;
+        break;
+      }
+    }
+
+    if (isMaster) {
       lcd.print("Correct");
       digitalWrite(lockOutput, HIGH);
       digitalWrite(ledGreenPin, HIGH);
