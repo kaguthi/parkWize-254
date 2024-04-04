@@ -7,38 +7,35 @@ $text        = $_POST["text"];
 include "db.php";
 
 if ($text == "") {
-    // This is the first request. Note how we start the response with CON
     $response  = "CON Welcome to ParkWise 254 \n";
-    $response .= "1. Create Account \n";
-    $response .= "2. Log In";
+    $response .= "1. Parking Management \n";
+    $response .= "2. User park searching \n";
+    $response .= "3. User parking";
 
 } else if ($text == "1") {
-    // Business logic for first level response
-    $response = "CON Enter full Name \n";
-    $add_user = "INSERT INTO users (user_id, name, gender) VALUES (NULL, $text, 'male')";
-    $query = mysqli_query($connect, $add_user);
+    $response = "CON Parking Management \n";
+    $response .= "1. Parking Manager to register parking site \n";
+    $response .= "2. Parking Manager to open or close parking site"; 
 } else if ($text == "2") {
-    // Business logic for first level response
-    // This is a terminal request. Note how we start the response with END
-    $response = "CON Choose your area \n";
-    $response .= "1. Kinoo";
+    $response = "CON User park searching \n";
+    $response .= "1. County name";
 
 } else if ($text == "3") {
-    $response = "CON Choose your area \n";
-    $response .= "1. Nairobi CBD";
-} else if($text == "3*1") { 
-
-    // This is a terminal request. Note how we start the response with END
-    $response = "CON Available parking slot \n";
-    $response .= "1. moi avenue  50 Available \n";
-    $response .= "2. Tom Mboya  20 Available";
-
-} else if($text == "3*1*1"){
-    $response = "END Welcome to Moi Avenue parking company";
-} else if ($text == "3*1*2"){
-    $response = "END Welcome to Tom Mboya parking company";
+    $response = "CON User Parking \n";
+    $response .= "1. Parking site \n";
+    $response .= "2. Car plate number \n";
+} else if($text == "1*1") { 
+    $response = "CON Enter Parking site Name";
+} else if($text == "1*2"){
+    $response = "CON Searching for a parking near you";
+} else if ($text == "1*3"){
+    $response = "CON User Parking \n";
+    $response .= "1. Parking site name \n";
+} else if ($text == "1*1*") {
+    $response = "END County name added successfully";
+    $add_county = "INSERT INTO users (user_id, name, gender) VALUES (NULL, $text, 'female')";
+    $query = mysqli_query($connect, $add_county);
 }
 
-// Echo the response back to the API
 header('Content-type: text/plain');
 echo $response;
